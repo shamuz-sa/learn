@@ -1,84 +1,89 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.api.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  *
  * @author succes
  */
+
 @Entity
-@Table(name = "Utilisateur")
+@Table
 public class User {
     @Id
-    @Column(name = "id")
-    private int user_id;
-    @Column(name = "nom")
-    private String user_nom;
-    @Column(name = "prenom")
-    private String user_prenom;
-    @Column(name = "role")
-    private String user_role;
-    
-    //constructeur
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
+    private Long id;
+    private String username;
+    private String password;
+    private String email;
+    private String role;
 
     public User() {
     }
 
-    public User(int user_id, String user_nom, String user_prenom, String user_role) {
-        this.user_id = user_id;
-        this.user_nom = user_nom;
-        this.user_prenom = user_prenom;
-        this.user_role = user_role;
-    }
-    
-    // getter & setter 
-
-    public int getUser_id() {
-        return user_id;
+    public User(Long id, String username, String password, String email, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public Long getId() {
+        return id;
     }
 
-    public String getUser_nom() {
-        return user_nom;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser_nom(String user_nom) {
-        this.user_nom = user_nom;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUser_prenom() {
-        return user_prenom;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setUser_prenom(String user_prenom) {
-        this.user_prenom = user_prenom;
+    public String getUsername() {
+        return username;
     }
 
-    public String getUser_role() {
-        return user_role;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setUser_role(String user_role) {
-        this.user_role = user_role;
+    public String getPassword() {
+        return password;
     }
-    
-    //tostring
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "identifiant :" + user_id + ", nom: " + user_nom + ", prenom: " + user_prenom + ", role:" + user_role + '}';
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
-
-    
-    
-    
 }
