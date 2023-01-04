@@ -1,7 +1,7 @@
-package com.api.controller;
+package com.api.learn.controller;
 
-import com.api.entity.User;
-import com.api.service.UserService;
+import com.api.learn.entity.User;
+import com.api.learn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +24,6 @@ public class UserController {
     public List<User> getUsers()
     {
         return userService.getUsers();
-       /* return List.of(
-                new User(
-                        1L,
-                        "toto",
-                        "tokpon",
-                        "toto.toto@gmail.com",
-                        "Admin"
-                )
-        ); */
+
     }
 }
