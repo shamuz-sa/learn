@@ -1,15 +1,24 @@
 package com.api.learn.entity;
 
-import jakarta.persistence.*;
+;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author succes
  */
 
+
 @Entity
 @Table
 public class User {
+
     @Id
     @SequenceGenerator(
             name = "user_sequence",
@@ -86,11 +95,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+        return "User{"
+                + "id=" + id
+                + ", username='" + username + '\''
+                + ", password='" + password + '\''
+                + ", role='" + role + '\''
+                + '}';
     }
 }
